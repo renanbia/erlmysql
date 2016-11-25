@@ -184,7 +184,7 @@ run({From, Row, FieldNames, ResultSet, CurrentRow} = State) ->
       From ! length(ResultSet), 
       run(State);
 % --------- next ----------
-    {From, next} when (Row >= length(ResultSet)) and (Row =< 0) -> 
+    {From, next} when (Row >= length(ResultSet)) or (Row =< 0) -> 
       From ! false, 
       run(State);
     {From, next} -> 
